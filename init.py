@@ -7,7 +7,6 @@ def possiblethrows():
         dict[i].append("single " + str(i))
         dict[i*2].append("double " + str(i))
         dict[i*3].append("triple " + str(i))
-
     return dict
 
 def dartboardgame(points):
@@ -25,5 +24,5 @@ def dartboardgame(points):
             gameplan.append([points,pt[throw][0]])
             points -= throw
     return gameplan
-
-print(dartboardgame(301))
+    
+    
