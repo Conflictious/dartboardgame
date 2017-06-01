@@ -2,12 +2,12 @@ from collections import defaultdict
 
 
 def possiblethrows():
-    dict = defaultdict(list)
+    ptdict = defaultdict(list)
     for i in range(1,21):
-        dict[i].append("single " + str(i))
-        dict[i*2].append("double " + str(i))
-        dict[i*3].append("triple " + str(i))
-    return dict
+        ptdict[i].append("single " + str(i))
+        ptdict[i*2].append("double " + str(i))
+        ptdict[i*3].append("triple " + str(i))
+    return ptdict
 
 def dartboardgame(points):
     pt = possiblethrows()
