@@ -11,7 +11,6 @@ def possiblethrows(onlyDoubles=True):
             ptdict[i].append("single " + str(i))
             ptdict[i*3].append("triple " + str(i))
         ptdict[25].append("bull 25")
-
     return ptdict
 
 
