@@ -12,18 +12,23 @@ def possiblethrows():
     return ptdict
 
 
-def dartboardgame(points):
-    pt = possiblethrows()
+def dartboardgame(points=301, startwithdouble=True, endwithdouble=True):
+    pta = possiblethrows(onlyDoubles=False)
+    ptd = possiblethrows(onlyDoubles=True)
     gameplan = []
+    if startwithdouble:
+        throw = max([d for d in ptd if d <= points])
+        gameplan.append([points, ptd[throw][0]])
+        points -= throw
     while points != 0:
-        throw = max([d for d in pt if d <= points])
-        #the last throw has to be a double
-        if points - throw <= 1 and not (throw in range(0, 40, 2) or throw == 50):
-            throw = max([d for d in pt if d <= points-2])
-            gameplan.append([points, pt[throw][0]])
-            points -= throw
+        throw = max([d for d in pta if d <= points])
+        if endwithdouble:
+            if 50 > points < 140:
+                throw = max([d for d in pta if points - d % 2 == 0 and d <= points])
+            elif points <= 50:
+                throw = max([d for d in ptd if d <= points])
+                gameplan.append([points, ptd[throw][0]])
         else:
-            throw = max([d for d in pt if d <= points])
-            gameplan.append([points, pt[throw][0]])
-            points -= throw
+            gameplan.append([points, pta[throw][0]])
+        points -= throw
     return gameplan
